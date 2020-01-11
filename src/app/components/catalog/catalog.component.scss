@@ -1,0 +1,44 @@
+.wrapper {
+  background: #e5eee9;
+  position: relative;
+  z-index: 1;
+  .catalog-wrapper {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e5eee9;
+    .catalog-title {
+      width: 100%;
+      padding: 10px;
+      background-color: #e8e9e9;
+      transition: 0.5s all;
+      cursor: pointer;
+      text-align: center;
+      margin-right: 5px;
+      a {
+        text-decoration: none;
+      }
+      b {
+        font-size: 24px;
+        color: #000000;
+      }
+    }
+    .catalog-active {
+      width: 100%;
+      padding: 10px;
+      background-color: rgb(31, 219, 188);
+      transition: 0.5s all;
+      cursor: pointer;
+      text-align: center;
+      margin-right: 5px;
+      a {
+        text-decoration: none;
+      }
+      b {
+        font-size: 24px;
+        color: #000000;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.search-value {
+  position: fixed;
+  .search-child {
+    position: relative;
+    z-index: 102;
+    cursor: pointer;
+  }
+}

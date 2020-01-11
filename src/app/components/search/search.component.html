@@ -1,0 +1,24 @@
+<input
+  class="form-control mr-sm-2"
+  type="text"
+  placeholder="Search"
+  name="searching"
+  [(ngModel)]="searchValue"
+/>
+<div class="search-value">
+  <ul
+    class="list-group "
+    style="width: 300px; color: brown"
+    *ngIf="searchValue"
+  >
+    <li
+      *ngFor="let item of searchingProducts | search: searchValue"
+      class="list-group-item search-child"
+      (click)="goToAboutThisProductPage(item)"
+      (click)="searchValue = ''"
+      routerLink="/aboutProduct"
+    >
+      {{ item.name }}
+    </li>
+  </ul>
+</div>

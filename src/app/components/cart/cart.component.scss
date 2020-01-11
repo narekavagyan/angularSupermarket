@@ -1,0 +1,108 @@
+.wrapper-main {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 200px;
+  position: relative;
+  z-index: 1;
+}
+.hastatel-wrapper {
+  background: green;
+  text-align: center;
+  cursor: pointer;
+  width: 200px;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 20px;
+  margin: 100px auto;
+  &:hover {
+    background: linear-gradient(rgb(32, 221, 32), rgb(51, 241, 76));
+    color: black;
+  }
+}
+.jumbotron {
+  text-align: center;
+  color: #000000;
+  .signup-btn {
+    color: #af21af;
+    width: 200px;
+    cursor: pointer;
+    margin: 10px auto;
+    text-align: center;
+    &:hover {
+      background: rgb(214, 18, 149);
+      color: #ffffff;
+    }
+  }
+}
+
+.product-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #000000;
+  background: #e5eee9;
+  box-sizing: border-box;
+  .my-list-group {
+    .my-list-group-item {
+      background: white;
+      border-radius: 0 0.5rem 0.5rem 0.5rem;
+      padding: 13px 12px 14px 15px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 2px solid #cccccc;
+      outline: none;
+      width: auto;
+      font-weight: 400;
+      color: #000000;
+      list-style-type: none;
+      strong {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+  .remove-btn {
+    margin: auto;
+    text-align: center;
+    padding: 1rem;
+    cursor: pointer;
+    color: hotpink;
+    &:hover {
+      background: rgb(214, 18, 149);
+      color: #ffffff;
+    }
+  }
+  .product-item {
+    text-align: center;
+    background: #ffffff;
+    padding: 1rem;
+
+    button {
+      width: 30px;
+    }
+    .countity-wrapper {
+      .countity-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .plus-icon {
+          cursor: pointer;
+          width: 27px;
+        }
+      }
+    }
+    .buy-wrapper {
+      width: auto;
+      background: green;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+    }
+
+    &:hover {
+      border: 1px solid green;
+    }
+  }
+}

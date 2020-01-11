@@ -1,0 +1,21 @@
+<div class="cotnainer-fluid wrapper">
+  <div class="form-wrapper">
+    <div class="title-wrapper">
+      <h1>Մուտք ձեր հաշիվ</h1>
+    </div>
+    <form>
+      <input type="text" placeholder="Email" [(ngModel)]="email" name="email" />
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+      />
+      <p class="alert-message">{{ alertMessage }}</p>
+      <input type="submit" class="btn-login" value="Մուտք" (click)="login()" />
+    </form>
+    <div class="signup-text">
+      <span>Գրանցված չեք?</span> <a routerLink="/signup"> <b>Գրանցվել</b></a>
+    </div>
+  </div>
+</div>

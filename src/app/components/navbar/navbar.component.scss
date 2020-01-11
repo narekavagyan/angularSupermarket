@@ -1,0 +1,53 @@
+.wrapper {
+  background: rgb(121, 219, 165);
+  color: #ffffff;
+  position: relative;
+  z-index: 102;
+  // padding: 0.5rem;
+
+  .logo-wrapper {
+    a {
+      padding: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: lightcoral;
+      font-size: 24px;
+      &:hover {
+        color: rgb(224, 13, 189);
+      }
+    }
+
+    .logo {
+      width: 100px;
+      height: 50px;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      border-radius: 5px;
+    }
+  }
+  .login_btn {
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    &:hover {
+      color: rgb(224, 13, 189);
+    }
+  }
+}
+
+.flexible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .links {
+    color: #ffffff;
+    text-decoration: none;
+    &:hover {
+      color: rgb(224, 13, 189);
+    }
+  }
+  .cart-logo {
+    width: 35x;
+    height: 35px;
+  }
+}

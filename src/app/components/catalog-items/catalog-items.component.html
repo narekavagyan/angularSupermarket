@@ -1,0 +1,54 @@
+<div class="container catalog-item-wrapper">
+  <div class="col-md-3">
+    <ul class="list-group">
+      <li
+        [ngClass]="{
+          'list-group-item': true
+        }"
+        *ngFor="let item of catalog.catalogs; let i = index"
+        (click)="showProducts(item)"
+        (click)="close()"
+      >
+        {{ item.title }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="carousel col-md-9">
+    <div class="carousel-title">
+      <h3>Մեր մասնաճյուղերը</h3>
+    </div>
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <img
+          src="https://image.businessinsider.com/5b75a0a4e361c01b008b4ff0?width=900&format=jpeg"
+          alt="Delhi Metro"
+          class="car-image"
+        />
+        <div class="carousel-caption">
+          <h3>Երևան</h3>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img
+          src="https://assets1.chainstoreage.com/styles/content_sm/s3/2019-10/Kitchen_Collection.jpg?itok=PWdxzSAc"
+          alt="Bangalore Metro"
+          class="car-image"
+        />
+        <div class="carousel-caption">
+          <h3>Արմավիր</h3>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img
+          src="https://www.retail-insight-network.com/wp-content/uploads/sites/20/2019/09/Aldi-store-exterior.jpg"
+          alt="Channai Metro"
+          class="car-image"
+        />
+        <div class="carousel-caption">
+          <h3>Գյումրի</h3>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>

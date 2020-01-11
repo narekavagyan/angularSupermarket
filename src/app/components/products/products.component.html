@@ -1,0 +1,56 @@
+<div *ngIf="product" class="product-title container">
+  <div>
+    <b>Դասավորել ըստ</b>
+    <select [(ngModel)]="sorting">
+      <option>ամսաթվի</option>
+      <option>գնի</option>
+    </select>
+  </div>
+  <h1>{{ product.title }}</h1>
+</div>
+
+<div *ngIf="product" class="container wrapper">
+  <div
+    *ngFor="
+      let item of product['products']
+        | sort: sorting
+        | paginate: { itemsPerPage: 8, currentPage: p };
+      let i = index
+    "
+    class="product-item col-md-3 col-sm-6"
+  >
+    <img src="../../../assets/images/product-image.png" alt="img" />
+    <h1
+      (click)="goToAboutThisProduct(item, product.title)"
+      routerLink="/aboutProduct"
+    >
+      {{ item.name }}
+    </h1>
+    <h2 class="new-price">{{ item.newPrice }} դրամ</h2>
+    <b>{{ item.date | date }}</b>
+    <div class="countity-wrapper">
+      <div class="countity-input">
+        <img
+          src="../../../assets/images/minus-square-solid.svg"
+          alt="minus-logo"
+          class="plus-icon"
+          (click)="countityMinus(product, p ? (p - 1) * 8 + i : i)"
+        />
+        <input type="text" [value]="item.countity" size="4" maxlength="4" />
+        <img
+          src="../../../assets/images/plus-square-regular.svg"
+          alt="plus-logo"
+          class="plus-icon"
+          (click)="countityAdd(product, p ? (p - 1) * 8 + i : i)"
+        />
+      </div>
+    </div>
+    <div class="buy-wrapper" (click)="buyProduct(item)">
+      ավելացնել
+    </div>
+  </div>
+  <pagination-controls
+    (pageChange)="p = $event"
+    responsive="true"
+  ></pagination-controls>
+</div>

@@ -1,0 +1,17 @@
+<div class="container wrapper">
+  <div class="catalog-wrapper">
+    <div
+      *ngFor="let catalog of catalogs; let i = index"
+      (click)="activate(catalog, i)"
+      [ngClass]="{
+        'catalog-title': true,
+        'catalog-active': catalog.isActive
+      }"
+    >
+      <b> {{ catalog.title }} </b>
+    </div>
+    <div class="catalog-title">
+      <a href="#akcianer"><b (click)="show()">Ակցիաներ</b></a>
+    </div>
+  </div>
+</div>

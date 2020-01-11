@@ -1,0 +1,35 @@
+<div class="container " *ngIf="isClosed">
+  <a name="akcianer"></a>
+  <div class="akcia-title">
+    <h1>Ակցիաներ</h1>
+  </div>
+  <div class="akcia-wrapper ">
+    <div *ngFor="let item of akcia; let i = index" class="akcia-item col-md-3">
+      <img src="../../../assets/images/product-image.png" alt="img" />
+      <h1>{{ item.name }}</h1>
+      <h2 class="new-price">{{ item.newPrice }} դրամ</h2>
+      <span class="old-price">{{ item.oldPrice }} դրամ</span>
+      <div class="countity-wrapper">
+        <div class="countity-input">
+          <img
+            src="../../../assets/images/minus-square-solid.svg"
+            alt="minus-logo"
+            class="plus-icon"
+            (click)="countityMinus(i)"
+          />
+
+          <input type="text" [value]="item.countity" size="4" maxlength="4" />
+          <img
+            src="../../../assets/images/plus-square-regular.svg"
+            alt="plyus-logo"
+            class="plus-icon"
+            (click)="countityAdd(i)"
+          />
+        </div>
+      </div>
+      <div class="buy-wrapper" (click)="buyProduct(item)">
+        ավելացնել
+      </div>
+    </div>
+  </div>
+</div>

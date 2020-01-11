@@ -1,0 +1,113 @@
+<div class="wrapper">
+  <form class="form-wrapper" [formGroup]="FormValidation">
+    <div class="title-wrapper">
+      <h1>Ավելացնել նոր ապրանք</h1>
+    </div>
+    <label for="category">
+      Բաժին
+      <select
+        [(ngModel)]="categoryName"
+        [ngModelOptions]="{ standalone: true }"
+        name="category"
+        (click)="showSubCategories()"
+      >
+        <option *ngFor="let catalog of catalogs" [value]="catalog.title">{{
+          catalog.title
+        }}</option>
+      </select>
+    </label>
+    <label for="subCategory">
+      Ենթաբաժին
+      <select
+        name="subCategory"
+        [(ngModel)]="subCategoryName"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option *ngFor="let item of subCategory" [value]="item.title">{{
+          item.title
+        }}</option>
+      </select>
+    </label>
+    <input
+      type="text"
+      class="form-input"
+      name="name"
+      formControlName="name"
+      placeholder="Ապրանքի անուն"
+      [(ngModel)]="addingItem.name"
+    />
+    <div
+      *ngIf="
+        FormValidation.controls['name'].invalid &&
+        (FormValidation.controls['name'].dirty ||
+          FormValidation.controls['name'].touched)
+      "
+    >
+      <div *ngIf="FormValidation.controls['name'].errors.required">
+        <p>անունը պարտադիր դաշտ է</p>
+      </div>
+    </div>
+
+    <input
+      type="text"
+      class="form-input"
+      name="newPrice"
+      formControlName="newPrice"
+      placeholder="Ապրանքի գին"
+      [(ngModel)]="addingItem.newPrice"
+    />
+
+    <div
+      *ngIf="
+        FormValidation.controls['newPrice'].invalid &&
+        FormValidation.controls['newPrice'].touched
+      "
+    >
+      <div *ngIf="FormValidation.controls['newPrice'].errors.required">
+        <p>գինը պարտադիր դաշտ է</p>
+      </div>
+    </div>
+
+    <input
+      type="text"
+      class="form-input"
+      name="count"
+      formControlName="count"
+      placeholder="Ապրանքի քանակ"
+      [(ngModel)]="addingItem.count"
+    />
+    <div
+      *ngIf="
+        FormValidation.controls['count'].invalid &&
+        FormValidation.controls['count'].touched
+      "
+    >
+      <div *ngIf="FormValidation.controls['count'].errors.required">
+        <p>քանակը պարտադիր դաշտ է</p>
+      </div>
+    </div>
+
+    <textarea
+      cols="50"
+      rows="5"
+      placeholder="Ապրանքի նկարագրություն"
+      name="text"
+      [(ngModel)]="addingItem.text"
+      [ngModelOptions]="{ standalone: true }"
+    ></textarea>
+
+    <button
+      (click)="
+        addItem(
+          addingItem.name,
+          addingItem.newPrice,
+          addingItem.count,
+          addingItem.text
+        )
+      "
+      [disabled]="FormValidation.invalid"
+    >
+      Ավելացնել ապրանքը
+    </button>
+  </form>
+</div>

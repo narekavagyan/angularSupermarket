@@ -1,0 +1,63 @@
+.akcia-title {
+  text-align: center;
+  margin-top: 50px;
+  color: #000000;
+  background: rgb(31, 219, 188);
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.akcia-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #000000;
+  background: rgb(184, 228, 224);
+
+  .akcia-item {
+    text-align: center;
+    background: #ffffff;
+    padding: 1rem;
+    box-sizing: border-box;
+    h1 {
+      cursor: pointer;
+    }
+    .old-price {
+      text-decoration: line-through;
+    }
+    .new-price {
+      color: royalblue;
+    }
+    button {
+      width: 30px;
+    }
+    .countity-wrapper {
+      .countity-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .plus-icon {
+          cursor: pointer;
+          width: 27px;
+        }
+      }
+    }
+    .buy-wrapper {
+      width: auto;
+      background: green;
+      color: white;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 5px;
+      margin: 20px;
+      &:hover {
+        background: rgb(18, 64, 214);
+      }
+    }
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid green;
+    }
+  }
+}

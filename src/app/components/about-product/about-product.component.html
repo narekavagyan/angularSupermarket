@@ -1,0 +1,94 @@
+<div class="product-wrapper">
+  <img src="../../../assets/images/product-image.png" alt="product-image" />
+  <h1>{{ product.name }}</h1>
+  <br />
+  <h2>{{ product.newPrice }} դրամ</h2>
+  <br />
+  <p>առկա է {{ product.count }} հատ</p>
+  <br />
+  <span>{{ product.text }}</span>
+  <strong *ngIf="product.feedbacks.length">Ardzaganqnery</strong><br />
+  <ul class="my-list-group">
+    <li *ngFor="let f of product.feedbacks" class="my-list-group-item">
+      <strong>{{ f.userName }}</strong>
+      {{ f.feedback }}
+    </li>
+  </ul>
+  <div *ngIf="product.name" class="buy-wrapper" (click)="buyProduct()">
+    ավելացնել
+  </div>
+</div>
+
+<div>
+  <form [formGroup]="FormValidation">
+    <h2>Ձեր արձագանքը</h2>
+    <input
+      type="text"
+      name="name"
+      formControlName="name"
+      placeholder="ձեր անունը"
+      [(ngModel)]="typeFeedBack.userName"
+    />
+    <div
+      *ngIf="
+        FormValidation.controls['name'].invalid &&
+        (FormValidation.controls['name'].dirty ||
+          FormValidation.controls['name'].touched)
+      "
+    >
+      <div *ngIf="FormValidation.controls['name'].errors.required">
+        <p>Partadir dasht</p>
+      </div>
+    </div>
+    <input
+      type="text"
+      name="email"
+      formControlName="email"
+      placeholder="ձեր էլեկտրոնային հասցեն"
+      [(ngModel)]="typeFeedBack.email"
+    />
+    <div
+      *ngIf="
+        FormValidation.controls['email'].invalid &&
+        (FormValidation.controls['email'].touched ||
+          FormValidation.controls['email'].dirty)
+      "
+    >
+      <div *ngIf="FormValidation.controls['email'].errors.required">
+        <p>Partadir dasht</p>
+      </div>
+      <div *ngIf="FormValidation.controls['email'].errors.email">
+        <p>Sxal Email</p>
+      </div>
+    </div>
+    <textarea
+      placeholder="ձեր նամակը"
+      name="text"
+      formControlName="text"
+      [(ngModel)]="typeFeedBack.feedback"
+    ></textarea>
+    <div
+      *ngIf="
+        FormValidation.controls['text'].invalid &&
+        (FormValidation.controls['text'].dirty ||
+          FormValidation.controls['text'].touched)
+      "
+    >
+      <div *ngIf="FormValidation.controls['text'].errors.required">
+        <p>Partadir dasht</p>
+      </div>
+    </div>
+    <input
+      type="submit"
+      value="ուղարկել նամակը"
+      [disabled]="FormValidation.invalid"
+      (click)="
+        addFeedBack(
+          typeFeedBack.userName,
+          typeFeedBack.email,
+          typeFeedBack.feedback
+        )
+      "
+    />
+  </form>
+</div>
