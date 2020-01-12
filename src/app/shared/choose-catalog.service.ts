@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import ProductsSnndamterq from './productsSnndamterq';
 import ProductsTntesakan from './productsTntesakan';
-import { Akcia, Feedback } from './akcia-products.service';
+import { Discount, Feedback } from './discount-products.service';
 
 export interface Catalog {
   title: string;
   isActive: boolean;
-  catalogs: Array<{ title: string; products: Akcia[] }>;
+  catalogs: Array<{ title: string; isActive: boolean; products: Discount[] }>;
 }
 @Injectable({
   providedIn: 'root'
@@ -18,13 +18,13 @@ export class ChooseCatalogService {
   public catalogSnndamterq: Catalog = ProductsSnndamterq;
   public catalogs: Catalog[] = [this.catalogTntesakan, this.catalogSnndamterq];
   public CatalogSubject$ = new BehaviorSubject<Catalog[]>(this.catalogs);
-  public ActiveCatalog$ = new BehaviorSubject<Catalog>(this.catalogSnndamterq);
+  public ActiveCatalog$ = new BehaviorSubject<Catalog>(this.catalogTntesakan);
   public ShowProductSubject$ = new BehaviorSubject<Catalog>(
     this.catalogSnndamterq[1]
   );
-  public SearchTntesakanSubject$ = new BehaviorSubject<Akcia[]>([]);
-  public SearchSnndamterqSubject$ = new BehaviorSubject<Akcia[]>([]);
-  public abouthProductSubject$ = new BehaviorSubject<Akcia>({
+  public SearchTntesakanSubject$ = new BehaviorSubject<Discount[]>([]);
+  public SearchSnndamterqSubject$ = new BehaviorSubject<Discount[]>([]);
+  public aboutProductSubject$ = new BehaviorSubject<Discount>({
     name: '',
     oldPrice: 0,
     newPrice: 0,
@@ -35,14 +35,11 @@ export class ChooseCatalogService {
     feedbacks: []
   });
 
-  goToAboutThisProduct(product, proCatTitle: string): void {
+  public goToAboutThisProduct(product, proCatTitle: string): void {
     this.proCatTitleForFeedback = proCatTitle;
-    this.abouthProductSubject$.next(product);
+    this.aboutProductSubject$.next(product);
   }
-
-  search() {}
-
-  addFeedBack(feedBack: Feedback, productName: string): void {
+  public addFeedBack(feedBack: Feedback, productName: string): void {
     if (productName) {
       this.catalogs
         .find(e =>
@@ -59,6 +56,11 @@ export class ChooseCatalogService {
     this.catalogs[i].isActive = true;
   }
   public showProducts(item: Catalog) {
+    this.catalogs.map(e =>
+      e.catalogs.map(i =>
+        i.title !== item.title ? (i.isActive = false) : (i.isActive = true)
+      )
+    );
     this.ShowProductSubject$.next(item);
   }
   public addCountity(item, index: number): void {
@@ -72,7 +74,7 @@ export class ChooseCatalogService {
     }
   }
   public addItem(
-    addingItem: Akcia,
+    addingItem: Discount,
     categoryName: string,
     subCategoryName: string
   ) {

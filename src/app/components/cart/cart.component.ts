@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Akcia } from 'src/app/shared/akcia-products.service';
+import { Discount } from 'src/app/shared/discount-products.service';
 import { CartService } from 'src/app/shared/cart.service';
 import { User, UserService } from 'src/app/shared/user.service';
 
@@ -10,7 +10,7 @@ import { User, UserService } from 'src/app/shared/user.service';
 })
 export class CartComponent implements OnInit {
   public user: User;
-  public products: Akcia[];
+  public products: Discount[];
   public isLogged = false;
   constructor(
     public cartService: CartService,

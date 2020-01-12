@@ -1,13 +1,14 @@
-<div class="container catalog-item-wrapper">
+<div class="container catalog-item-wrapper ">
   <div class="col-md-3">
     <ul class="list-group">
       <li
-        [ngClass]="{
-          'list-group-item': true
-        }"
         *ngFor="let item of catalog.catalogs; let i = index"
         (click)="showProducts(item)"
         (click)="close()"
+        [ngClass]="{
+          'list-group-item': true,
+          green: item.isActive
+        }"
       >
         {{ item.title }}
       </li>

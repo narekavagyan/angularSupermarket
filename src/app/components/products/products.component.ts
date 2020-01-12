@@ -3,7 +3,7 @@ import {
   ChooseCatalogService,
   Catalog
 } from 'src/app/shared/choose-catalog.service';
-import { Akcia } from 'src/app/shared/akcia-products.service';
+import { Discount } from 'src/app/shared/discount-products.service';
 import { CartService } from 'src/app/shared/cart.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
@@ -12,23 +12,23 @@ import { NgxPaginationModule } from 'ngx-pagination';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  public pageNumber = 1;
   public sorting = 'ամսաթվի';
   public product: Catalog;
   constructor(
     public catalogService: ChooseCatalogService,
     private cartService: CartService
   ) {}
-  goToAboutThisProduct(product, proCatTitle: string) {
+  public goToAboutThisProduct(product, proCatTitle: string) {
     this.catalogService.goToAboutThisProduct(product, proCatTitle);
   }
-  countityAdd(item: Catalog, index: number): void {
-    console.log(index);
+  public countityAdd(item: Catalog, index: number): void {
     this.catalogService.addCountity(item, index);
   }
-  countityMinus(item: Catalog, index: number): void {
+  public countityMinus(item: Catalog, index: number): void {
     this.catalogService.countityMinus(item, index);
   }
-  buyProduct(item: Akcia): void {
+  public buyProduct(item: Discount): void {
     this.cartService.buyProduct(item);
     alert('Ապրանքն ավելացված է Զամբյուղում');
   }

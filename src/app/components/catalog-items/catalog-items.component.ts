@@ -4,7 +4,7 @@ import {
   Catalog
 } from '../../shared/choose-catalog.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AkciaProductsService } from 'src/app/shared/akcia-products.service';
+import { DiscountProductsService } from 'src/app/shared/discount-products.service';
 import { NgStyle } from '@angular/common';
 
 @Component({
@@ -17,7 +17,7 @@ export class CatalogItemsComponent implements OnInit {
   constructor(
     public catalogService: ChooseCatalogService,
     public config: NgbCarouselConfig,
-    public akciaService: AkciaProductsService
+    public dicountService: DiscountProductsService
   ) {
     config.interval = 4000;
     config.wrap = true;
@@ -25,12 +25,12 @@ export class CatalogItemsComponent implements OnInit {
     config.pauseOnHover = true;
     config.showNavigationArrows = true;
   }
-  showProducts(item: Catalog) {
+  public showProducts(item: Catalog): void {
     this.catalogService.showProducts(item);
   }
 
-  close(): void {
-    this.akciaService.closeAkcia();
+  public close(): void {
+    this.dicountService.closeDiscount();
   }
   ngOnInit() {
     this.catalogService.ActiveCatalog$.subscribe(e => (this.catalog = e));

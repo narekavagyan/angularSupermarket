@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import RandomObjects from './akciaProducts';
+import RandomObjects from './discountProducts';
 import { BehaviorSubject } from 'rxjs';
 
 export interface Feedback {
@@ -7,7 +7,7 @@ export interface Feedback {
   userName: string;
   email: string;
 }
-export interface Akcia {
+export interface Discount {
   name: string;
   oldPrice: number;
   newPrice: number;
@@ -21,29 +21,33 @@ export interface Akcia {
 @Injectable({
   providedIn: 'root'
 })
-export class AkciaProductsService {
+export class DiscountProductsService {
   public open = true;
   public close = false;
-  public akciaproducts: Akcia[] = RandomObjects().splice(27);
-  public akciSubject$ = new BehaviorSubject<Akcia[]>(this.akciaproducts);
+  public discountProducts: Discount[] = RandomObjects().splice(27);
+  public discountSubject$ = new BehaviorSubject<Discount[]>(
+    this.discountProducts
+  );
   public openSubject$ = new BehaviorSubject<boolean>(this.open);
   public countityAdd(index: number): void {
-    if (this.akciaproducts[index].countity < this.akciaproducts[index].count) {
-      this.akciaproducts[index].countity += 1;
-      this.akciSubject$.next(this.akciaproducts);
+    if (
+      this.discountProducts[index].countity < this.discountProducts[index].count
+    ) {
+      this.discountProducts[index].countity += 1;
+      this.discountSubject$.next(this.discountProducts);
     }
   }
 
   public countityMinus(index: number): void {
-    if (this.akciaproducts[index].countity > 0) {
-      this.akciaproducts[index].countity -= 1;
-      this.akciSubject$.next(this.akciaproducts);
+    if (this.discountProducts[index].countity > 0) {
+      this.discountProducts[index].countity -= 1;
+      this.discountSubject$.next(this.discountProducts);
     }
   }
   public show() {
     this.openSubject$.next(this.open);
   }
-  public closeAkcia() {
+  public closeDiscount() {
     this.openSubject$.next(this.close);
   }
   constructor() {}

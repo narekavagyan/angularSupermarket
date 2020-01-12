@@ -3,7 +3,7 @@ import {
   ChooseCatalogService,
   Catalog
 } from 'src/app/shared/choose-catalog.service';
-import { Akcia } from 'src/app/shared/akcia-products.service';
+import { Discount } from 'src/app/shared/discount-products.service';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +13,7 @@ import { Akcia } from 'src/app/shared/akcia-products.service';
 export class SearchComponent implements OnInit {
   public searchValue = '';
   public catalogs: Catalog[];
-  public searchingProducts: Akcia[] = [];
+  public searchingProducts: Discount[] = [];
   public searchFinalResult = '';
   constructor(private chooseCatalogService: ChooseCatalogService) {}
 

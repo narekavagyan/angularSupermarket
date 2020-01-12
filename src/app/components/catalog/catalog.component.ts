@@ -3,7 +3,7 @@ import {
   ChooseCatalogService,
   Catalog
 } from '../../shared/choose-catalog.service';
-import { AkciaProductsService } from 'src/app/shared/akcia-products.service';
+import { DiscountProductsService } from 'src/app/shared/discount-products.service';
 
 @Component({
   selector: 'app-catalog',
@@ -14,10 +14,10 @@ export class CatalogComponent implements OnInit {
   public catalogs: Catalog[];
   constructor(
     public catalogService: ChooseCatalogService,
-    public akciaService: AkciaProductsService
+    public akciaService: DiscountProductsService
   ) {}
-  activate(catalog: Catalog, i: number): void {
-    this.catalogService.activate(catalog, i);
+  activate(catalog: Catalog, index: number): void {
+    this.catalogService.activate(catalog, index);
   }
   show(): void {
     this.akciaService.show();
@@ -26,5 +26,6 @@ export class CatalogComponent implements OnInit {
   ngOnInit() {
     this.catalogService.CatalogSubject$.subscribe(e => (this.catalogs = e));
     this.catalogs.map(e => (e.isActive = false));
+    this.catalogs[0].isActive = true;
   }
 }

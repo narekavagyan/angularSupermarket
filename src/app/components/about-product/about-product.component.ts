@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChooseCatalogService } from 'src/app/shared/choose-catalog.service';
-import { Akcia, Feedback } from 'src/app/shared/akcia-products.service';
+import { Discount, Feedback } from 'src/app/shared/discount-products.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/shared/cart.service';
 
@@ -16,7 +16,7 @@ export class AboutProductComponent implements OnInit {
     userName: '',
     email: ''
   };
-  public product: Akcia = {
+  public product: Discount = {
     name: '',
     oldPrice: 0,
     newPrice: 0,
@@ -41,7 +41,7 @@ export class AboutProductComponent implements OnInit {
       text: ['', Validators.required]
     });
   }
-  addFeedBack(userName, email, feedback): void {
+  public addFeedBack(userName, email, feedback): void {
     if (this.product.name) {
       this.catalogSevric.addFeedBack(
         { userName, email, feedback },
@@ -52,11 +52,11 @@ export class AboutProductComponent implements OnInit {
       this.typeFeedBack.email = '';
     }
   }
-  buyProduct(): void {
+  public buyProduct(): void {
     this.cartService.buyProduct(this.product);
     alert('Ապրանքն ավելացված է Զամբյուղում');
   }
-  ngOnInit() {
-    this.catalogSevric.abouthProductSubject$.subscribe(e => (this.product = e));
+  public ngOnInit() {
+    this.catalogSevric.aboutProductSubject$.subscribe(e => (this.product = e));
   }
 }

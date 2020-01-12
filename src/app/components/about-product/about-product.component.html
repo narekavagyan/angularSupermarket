@@ -6,8 +6,8 @@
   <br />
   <p>առկա է {{ product.count }} հատ</p>
   <br />
-  <span>{{ product.text }}</span>
-  <strong *ngIf="product.feedbacks.length">Ardzaganqnery</strong><br />
+  <span>{{ product.text }}</span> <br />
+  <strong *ngIf="product.feedbacks.length">արձագանք</strong><br />
   <ul class="my-list-group">
     <li *ngFor="let f of product.feedbacks" class="my-list-group-item">
       <strong>{{ f.userName }}</strong>

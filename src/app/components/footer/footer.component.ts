@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  public footerTitles: Array<string> = [
+  public footerTitles: string[] = [
     'Մեր մասին',
     'Աշխատատեղեր',
     'Հաճախորդների կարծիքներ',

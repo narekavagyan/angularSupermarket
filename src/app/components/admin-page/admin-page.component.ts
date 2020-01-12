@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Akcia } from 'src/app/shared/akcia-products.service';
+import { Discount } from 'src/app/shared/discount-products.service';
 import {
   Catalog,
   ChooseCatalogService
@@ -17,7 +17,7 @@ export class AdminPageComponent implements OnInit {
   public subCategoryName = '';
   public subCategory = [];
   public catalogs: Catalog[];
-  public addingItem: Akcia = {
+  public addingItem: Discount = {
     name: '',
     oldPrice: 0,
     newPrice: 500,

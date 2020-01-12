@@ -14,7 +14,7 @@
     *ngFor="
       let item of product['products']
         | sort: sorting
-        | paginate: { itemsPerPage: 8, currentPage: p };
+        | paginate: { itemsPerPage: 8, currentPage: pageNumber };
       let i = index
     "
     class="product-item col-md-3 col-sm-6"
@@ -34,14 +34,19 @@
           src="../../../assets/images/minus-square-solid.svg"
           alt="minus-logo"
           class="plus-icon"
-          (click)="countityMinus(product, p ? (p - 1) * 8 + i : i)"
+          (click)="
+            countityMinus(product, pageNumber ? (pageNumber - 1) * 8 + i : i)
+          "
         />
+
         <input type="text" [value]="item.countity" size="4" maxlength="4" />
         <img
           src="../../../assets/images/plus-square-regular.svg"
           alt="plus-logo"
           class="plus-icon"
-          (click)="countityAdd(product, p ? (p - 1) * 8 + i : i)"
+          (click)="
+            countityAdd(product, pageNumber ? (pageNumber - 1) * 8 + i : i)
+          "
         />
       </div>
     </div>
@@ -50,7 +55,7 @@
     </div>
   </div>
   <pagination-controls
-    (pageChange)="p = $event"
+    (pageChange)="pageNumber = $event"
     responsive="true"
   ></pagination-controls>
 </div>
