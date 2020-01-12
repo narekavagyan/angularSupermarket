@@ -33,6 +33,7 @@ export class DiscountProductsComponent implements OnInit {
     this.discountProductsService.discountSubject$.subscribe(
       e => (this.discount = e)
     );
+
     this.discountProductsService.openSubject$.subscribe(
       i => (this.isClosed = i)
     );

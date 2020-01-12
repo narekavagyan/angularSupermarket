@@ -1,10 +1,13 @@
 <div class="container " *ngIf="isClosed">
-  <a name="akcianer"></a>
+  <a name="discounts"></a>
   <div class="akcia-title">
     <h1>Ակցիաներ</h1>
   </div>
   <div class="akcia-wrapper ">
-    <div *ngFor="let item of akcia; let i = index" class="akcia-item col-md-3">
+    <div
+      *ngFor="let item of discount; let i = index"
+      class="akcia-item col-md-3"
+    >
       <img src="../../../assets/images/product-image.png" alt="img" />
       <h1>{{ item.name }}</h1>
       <h2 class="new-price">{{ item.newPrice }} դրամ</h2>
